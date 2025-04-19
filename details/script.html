@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title id="page-title">تصميم سكربت | بيرل بايت</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #0a3d62;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #0a3d62;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="lang-toggle" onclick="toggleLang()">EN</button>
+    <div class="container">
+        <h1 id="service-title">تصميم سكربت</h1>
+        <img src="../img/script.jpg" alt="تصميم سكربت">
+        <p id="service-desc">نطور سكربتات مخصصة لمشروعك مثل نظام حجز، نموذج تسجيل دخول، لوحة تحكم بسيطة أو سكربت إرسال تلقائي.</p>
+        <p><strong id="service-price">السعر يبدأ من: 20 BHD</strong></p>
+    </div>
+    <script>
+        let currentLang = "ar";
+        const content = {
+            ar: {
+                "page-title": "تصميم سكربت | بيرل بايت",
+                "service-title": "تصميم سكربت",
+                "service-desc": "نطور سكربتات مخصصة لمشروعك مثل نظام حجز، نموذج تسجيل دخول، لوحة تحكم بسيطة أو سكربت إرسال تلقائي.",
+                "service-price": "السعر يبدأ من: 20 BHD",
+                "lang-btn": "EN"
+            },
+            en: {
+                "page-title": "Script Development | Pearl Byte",
+                "service-title": "Script Development",
+                "service-desc": "We develop custom scripts like booking systems, login forms, dashboards, or auto-message tools.",
+                "service-price": "Starting from: 20 BHD",
+                "lang-btn": "AR"
+            }
+        };
+        function toggleLang() {
+            currentLang = currentLang === "ar" ? "en" : "ar";
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+            const c = content[currentLang];
+            for (const id in c) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = c[id];
+            }
+            document.querySelector(".lang-toggle").textContent = c["lang-btn"];
+        }
+    </script>
+</body>
+</html>
